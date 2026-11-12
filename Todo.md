@@ -301,11 +301,11 @@ DRM position.
 - [ ] `internal/settings` — the JSON store with an atomic write
 - [ ] `internal/settings` — user-scoped versus application-scoped settings
 - [ ] `internal/settings` — the settings dump for the log
-- [ ] `internal/progress` — the progress message protocol
-- [ ] `internal/progress` — `AddTotalSteps` may be negative
-- [ ] `internal/progress` — the per-mille accumulator
-- [ ] `internal/progress` — `ResetSteps` rolls the segment into the accumulator
-- [ ] `internal/progress` — the progress info factories
+- [x] `internal/progress` — the progress message protocol
+- [x] `internal/progress` — `AddTotalSteps` may be negative
+- [x] `internal/progress` — the per-mille accumulator
+- [x] `internal/progress` — `ResetSteps` rolls the segment into the accumulator
+- [x] `internal/progress` — the progress info factories
 - [ ] `internal/progress` — the `…Cancel` variants that remove an item
 - [ ] `internal/progress` — the graceful degradation ladder for the status line
 - [ ] `internal/logging` — the settings dump via reflection
@@ -417,11 +417,13 @@ DRM position.
 
 ## M9 — URI handoff receiver
 
+- [x] `internal/app` — the `unbind://` URI parser
+- [x] `internal/app` — the URI verbs, `add` and `show`
+- [x] `internal/app` — the URI parameters, `p`, `doc`, `activate`, `src`
+- [x] `internal/app` — the handoff document schema and the `protocol` field
+- [x] `internal/app` — the path validation rules
+- [x] `internal/app` — the deduplication, case-insensitive on Windows
 - [ ] `internal/app` — the CLI parser, the positional files and `--handoff`
-- [ ] `internal/app` — the `unbind://` URI parser
-- [ ] `internal/app` — the URI verbs, `add` and `show`
-- [ ] `internal/app` — the URI parameters, `p`, `doc`, `activate`, `src`
-- [ ] `internal/app` — the handoff document schema and the `protocol` field
 - [ ] `internal/app` — the named mutex, the primary and secondary arbitration
 - [ ] `internal/platform` — the named pipe server
 - [ ] `internal/platform` — the named pipe client
@@ -429,8 +431,6 @@ DRM position.
 - [ ] `internal/platform` — the pipe security descriptor, owner rights only
 - [ ] `internal/app` — the secondary forwards the URI and exits
 - [ ] `internal/app` — the primary handles the request on the GUI thread
-- [ ] `internal/app` — the path validation rules
-- [ ] `internal/app` — the deduplication, case-insensitive on Windows
 - [ ] `internal/app` — the handoff does not auto-convert
 - [ ] `internal/app` — the handoff during a running conversion
 
@@ -565,8 +565,9 @@ they are the first thing to cover.
 - [x] `internal/naming` — the naming matrix, every `EFileNaming` × `EConvMode` × `EParts`
 - [ ] `internal/platform` — `ExUnc` — a short path, a long path, a UNC path, an already-converted path
 - [ ] `internal/ffmpeg` — the output parsing, one case per regex
-- [ ] `internal/app` — the URI parsing, the golden fixtures
-- [ ] `internal/app` — the handoff document, the golden fixtures
+- [x] `internal/app` — the URI parsing, the golden fixtures
+- [x] `internal/app` — the handoff document, the golden fixtures
+- [x] `internal/progress` — the accumulator and the per-mille conversion
 - [ ] integration — convert a three-chapter book in each of the four modes
 - [ ] integration — convert a two-part book, `EParts.all`, one playlist
 - [ ] integration — convert a partial part set, `EParts.some`
