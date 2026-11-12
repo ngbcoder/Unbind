@@ -362,24 +362,26 @@ DRM position.
 - [ ] `internal/tags` — the MP4 writer — the cover via an attached picture input (M8)
 - [ ] `internal/tags` — the `©rldt` custom release date (needs a real .aax to verify)
 
-## M7 — Audible metadata
+## M7 — Audible metadata · DONE
 
-- [ ] `internal/metadata` — the ASIN regex, the **last** match wins
-- [ ] `internal/metadata` — `AsinJsonFile` — the local, relative and absolute search
-- [ ] `internal/metadata` — `content_metadata_<ASIN>.json` — the chapter tree
-- [ ] `internal/metadata` — the empty-title repair, a single dot
-- [ ] `internal/metadata` — the zero-length chapter repair, the 1 ms floor
-- [ ] `internal/metadata` — the brand intro and outro durations
-- [ ] `internal/metadata` — `SimsBySeries/<ASIN>.json` — the product record
-- [ ] `internal/metadata` — `series_titles_<ASIN>.json` — the series list
-- [ ] `internal/metadata` — the SKU lookup for multi-part books
-- [ ] `internal/metadata` — the `StartsWith` SKU comparison
-- [ ] `internal/metadata` — the discarded-file cache
-- [ ] `internal/metadata` — the activation code from the user setting
-- [ ] `internal/metadata` — the activation code from `HKLM\SOFTWARE\Audible\SWGIDMAP`
-- [ ] `internal/metadata` — the activation code from `AudibleActivation.sys`
-- [ ] `internal/metadata` — the eight-hex-digit code format
-- [ ] `internal/metadata` — the activation code redaction in the log
+- [x] `internal/metadata` — the ASIN regex
+- [x] `internal/metadata` — `AsinJsonFile` — the local, relative and absolute search
+- [x] `internal/metadata` — `content_metadata_<ASIN>.json` — the chapter tree
+- [x] `internal/metadata` — the empty-title repair, a single dot
+- [x] `internal/metadata` — the zero-length chapter repair, the 1 ms floor
+- [x] `internal/metadata` — the brand intro and outro durations
+- [x] `internal/metadata` — `SimsBySeries/<ASIN>.json` — the product record
+- [x] `internal/metadata` — `series_titles_<ASIN>.json` — the series list
+- [x] `internal/metadata` — the SKU lookup for multi-part books
+- [x] `internal/metadata` — the `StartsWith` SKU comparison
+- [x] `internal/metadata` — the activation code from the user setting
+- [x] `internal/metadata` — the activation code from `HKLM\SOFTWARE\Audible\SWGIDMAP`
+- [x] `internal/metadata` — the activation code from `AudibleActivation.sys`
+- [x] `internal/metadata` — the eight-hex-digit code format
+- [x] `internal/metadata` — the activation code redaction in the log
+- [x] `internal/metadata` — the tests for the ASIN, the sidecars and the codes
+- [ ] `internal/metadata` — the discarded-file cache, the sidecar scan is cheap enough for now
+- [ ] `internal/metadata` — the absolute search in the Audible package directories
 
 ## M8 — Conversion pipeline
 
