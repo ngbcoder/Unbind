@@ -311,34 +311,35 @@ DRM position.
 - [ ] `internal/logging` — the settings dump via reflection
 - [ ] `internal/logging` — the cycle detection and the depth guard
 
-## M5 — FFmpeg integration
+## M5 — FFmpeg integration · DONE
 
-- [ ] `internal/ffmpeg` — the process host, stdout and stderr read concurrently
-- [ ] `internal/ffmpeg` — the command templates with `<PLACEHOLDER>` tokens
-- [ ] `internal/ffmpeg` — the token substitution table
-- [ ] `internal/ffmpeg` — `VerifyFFmpegPath` — parse `ffmpeg -version`
-- [ ] `internal/ffmpeg` — the relaxed version parse fallback
-- [ ] `internal/ffmpeg` — `GetAudioMeta` — the probe
-- [ ] `internal/ffmpeg` — `VerifyActivation` — the probe with `-activation_bytes`
-- [ ] `internal/ffmpeg` — `Transcode` — the main conversion
-- [ ] `internal/ffmpeg` — `ExtractMeta` — write an `ffmetadata` file
-- [ ] `internal/ffmpeg` — `DetectSilence` — the `silencedetect` filter
-- [ ] `internal/ffmpeg` — the duration and duration-plus-bitrate regexes
-- [ ] `internal/ffmpeg` — the audio stream regexes
-- [ ] `internal/ffmpeg` — the chapter and chapter-title regexes
-- [ ] `internal/ffmpeg` — the silence start and end regexes
-- [ ] `internal/ffmpeg` — the timestamp regexes for the progress
-- [ ] `internal/ffmpeg` — the mux-overhead success marker
-- [ ] `internal/ffmpeg` — the error regexes
-- [ ] `internal/ffmpeg` — the `.aa` and `.aax` detection regexes
-- [ ] `internal/ffmpeg` — the no-activation-needed and bad-activation regexes
-- [ ] `internal/ffmpeg` — the cancellation handler writes `q` to stdin
-- [ ] `internal/ffmpeg` — the fractional progress callback
-- [ ] `internal/ffmpeg` — `SetBitRate` — the `-b:a` / `-q:a` computation
-- [ ] `internal/ffmpeg` — the sample-rate cap that follows the bit rate
-- [ ] `internal/ffmpeg` — the VBR quality table for MP3
-- [ ] `internal/ffmpeg` — the executable resolution, 64-bit and the user directory
-- [ ] `internal/ffmpeg` — the `ffmetadata` chapter file format
+- [x] `internal/ffmpeg` — the process host, stdout and stderr read concurrently
+- [x] `internal/ffmpeg` — the command templates with `<PLACEHOLDER>` tokens
+- [x] `internal/ffmpeg` — the token substitution table
+- [x] `internal/ffmpeg` — `VerifyFFmpegPath` — parse `ffmpeg -version`
+- [x] `internal/ffmpeg` — the relaxed version parse fallback
+- [x] `internal/ffmpeg` — `GetAudioMeta` — the probe
+- [x] `internal/ffmpeg` — `VerifyActivation` — the probe with `-activation_bytes`
+- [x] `internal/ffmpeg` — `Transcode` — the main conversion
+- [x] `internal/ffmpeg` — `ExtractMeta` — write an `ffmetadata` file
+- [x] `internal/ffmpeg` — `DetectSilence` — the `silencedetect` filter
+- [x] `internal/ffmpeg` — the duration and duration-plus-bitrate regexes
+- [x] `internal/ffmpeg` — the audio stream regexes
+- [x] `internal/ffmpeg` — the chapter and chapter-title regexes
+- [x] `internal/ffmpeg` — the silence start and end regexes
+- [x] `internal/ffmpeg` — the timestamp regexes for the progress
+- [x] `internal/ffmpeg` — the mux-overhead success marker
+- [x] `internal/ffmpeg` — the error regexes
+- [x] `internal/ffmpeg` — the `.aa` and `.aax` detection regexes
+- [x] `internal/ffmpeg` — the no-activation-needed and bad-activation regexes
+- [x] `internal/ffmpeg` — the cancellation handler writes `q` to stdin
+- [x] `internal/ffmpeg` — the fractional progress callback
+- [x] `internal/ffmpeg` — `SetBitRate` — the `-b:a` / `-q:a` computation
+- [x] `internal/ffmpeg` — the sample-rate cap that follows the bit rate
+- [x] `internal/ffmpeg` — the VBR quality table for MP3
+- [x] `internal/ffmpeg` — the executable resolution, 64-bit and the user directory
+- [x] `internal/ffmpeg` — the `ffmetadata` chapter file format
+- [x] `internal/ffmpeg` — the tests for the regexes, the parsing and the helpers
 
 ## M6 — Tag read and write
 

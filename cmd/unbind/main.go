@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	goui "github.com/golang-gui/goui/ui"
 	"github.com/golang-gui/goui/theme/modern"
+	goui "github.com/golang-gui/goui/ui"
 
 	"github.com/ngbcoder/Unbind/internal/ui"
 )
