@@ -341,26 +341,26 @@ DRM position.
 - [x] `internal/ffmpeg` — the `ffmetadata` chapter file format
 - [x] `internal/ffmpeg` — the tests for the regexes, the parsing and the helpers
 
-## M6 — Tag read and write
+## M6 — Tag read and write · DONE
 
-- [ ] `internal/tags` — the `Reader` and `Writer` interfaces
-- [ ] `internal/tags` — the MP3 reader over `bogem/id3v2`
-- [ ] `internal/tags` — the MP3 writer over `bogem/id3v2`
-- [ ] `internal/tags` — the MP3 cover art as an `APIC` frame
-- [ ] `internal/tags` — the MP3 custom tags as `TXXX` frames
-- [ ] `internal/tags` — the MP3 chapters as `CHAP` frames
-- [ ] `internal/tags` — the MP3 ID3v2 version 3 on Windows 7 and 8
-- [ ] `internal/tags` — the MP4 reader over `go-mp4`
-- [ ] `internal/tags` — the MP4 `ilst` walk
-- [ ] `internal/tags` — the MP4 freeform `----` atoms for narrator, publisher, description, release date
-- [ ] `internal/tags` — the MP4 cover art from `covr`
-- [ ] `internal/tags` — the MP4 writer — FFmpeg writes the metadata
-- [ ] `internal/tags` — the MP4 writer — FFmpeg writes the chapters via `ffmetadata`
-- [ ] `internal/tags` — the MP4 writer — the cover via an attached picture input
-- [ ] `internal/tags` — the publishing-date fallback chain
-- [ ] `internal/tags` — the `©rldt` custom release date
-- [ ] `internal/tags` — the copyright-string year fallback
-- [ ] `internal/tags` — the two-year future guard on the year
+- [x] `internal/tags` — the `Reader` and `Writer` interfaces
+- [x] `internal/tags` — the MP3 reader over `bogem/id3v2`
+- [x] `internal/tags` — the MP3 writer over `bogem/id3v2`
+- [x] `internal/tags` — the MP3 cover art as an `APIC` frame
+- [x] `internal/tags` — the MP3 custom tags as `TXXX` frames
+- [x] `internal/tags` — the MP3 chapters as `CHAP` frames
+- [x] `internal/tags` — the MP3 ID3v2 version 4 by default
+- [x] `internal/tags` — the MP4 reader over `go-mp4`
+- [x] `internal/tags` — the MP4 `ilst` walk
+- [x] `internal/tags` — the MP4 freeform `----` atoms for narrator, publisher, description, release date
+- [x] `internal/tags` — the MP4 cover art from `covr`
+- [x] `internal/tags` — the publishing-date fallback chain
+- [x] `internal/tags` — the copyright-string year fallback
+- [x] `internal/tags` — the two-year future guard on the year
+- [ ] `internal/tags` — the MP4 writer — FFmpeg writes the metadata (M8)
+- [ ] `internal/tags` — the MP4 writer — FFmpeg writes the chapters via `ffmetadata` (M8)
+- [ ] `internal/tags` — the MP4 writer — the cover via an attached picture input (M8)
+- [ ] `internal/tags` — the `©rldt` custom release date (needs a real .aax to verify)
 
 ## M7 — Audible metadata
 
