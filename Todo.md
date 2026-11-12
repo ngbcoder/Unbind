@@ -157,6 +157,7 @@ recorded here so it is a decision rather than an accident.
 | 14 | `Logging.Log(uint, string)` resolves to the `Type` overload and throws | Not ported | A known C# defect (design §18.7). |
 | 15 | `SettingsForm.btnFfmpegLoc_Click` compares the new value with itself | Not ported | A known C# defect (design §22.12). |
 | 16 | `ContentMetaDataJson.cs`, an orphaned near-duplicate of the compiled model | Not ported | Dead weight in the original (design §22.13). |
+| 17 | A hierarchy of settings interfaces, so the engine never sees the app's settings class | One concrete `settings.Settings` struct | Go has no designer-generated settings class, so there is nothing to hide. The app and the engine share one struct, the user interface edits its fields directly, and a conversion takes a frozen `Snapshot` so that a later edit cannot change a run in progress. Tests construct the struct directly instead of implementing an interface. |
 
 **Preserved without deviation** because they are behaviour, not structure: the
 four conversion modes, the four-level parallelism and its mode-aware degree
@@ -185,58 +186,62 @@ DRM position.
 
 ## M1 — Domain model
 
-- [ ] `internal/settings` — `EConvFormat` (`mp3`, `mp4`)
-- [ ] `internal/settings` — `EConvMode` (`single`, `chapters`, `splitChapters`, `splitTime`)
-- [ ] `internal/settings` — `EFileNaming` (5 values)
-- [ ] `internal/settings` — `ETitleNaming` (7 values)
-- [ ] `internal/settings` — `ETrackNumbering` (3 values)
-- [ ] `internal/settings` — `ELongTitle` (4 values)
-- [ ] `internal/settings` — `EGeneralNaming` (3 values)
-- [ ] `internal/settings` — `EGeneralNamingEx` (4 values)
-- [ ] `internal/settings` — `EFlatFolderNaming` (2 values)
-- [ ] `internal/settings` — `EAaxCopyMode` flags enum with the 1/2/4 bit matrix
-- [ ] `internal/settings` — `ENamedChapters` (3 values)
-- [ ] `internal/settings` — `EOnlineUpdate` (3 values)
-- [ ] `internal/settings` — `EVerifyAdjustChapterMarks` (3 values)
-- [ ] `internal/settings` — `EFixAACEncoding` (3 values)
-- [ ] `internal/settings` — `EReducedBitRate` (8 values)
-- [ ] `internal/settings` — `EPreferEmbeddedChapterTimes` (3 values)
-- [ ] `internal/settings` — `ERoleTagAssignment` (5 values, 2 deprecated)
-- [ ] `internal/settings` — `EOutFolderConflict` (4 values)
-- [ ] `internal/settings` — `EProgressPhase` (5 values)
-- [ ] `internal/settings` — `ECallbackType` (10 values)
-- [ ] `internal/settings` — the `ConvSettings` interface hierarchy
-- [ ] `internal/settings` — `NamingAndModeSettings`, `NamingSettingsEx`, `NamingSettings`
-- [ ] `internal/settings` — `TitleSettingsEx`, `TitleNamingSettings`
-- [ ] `internal/settings` — `ModeSettings`, `BitRateSettings`
-- [ ] `internal/settings` — `ActivationSettings`, `UpdateSettings`, `AaxCopySettings`
-- [ ] `internal/settings` — `RoleTagAssignmentSettings`
-- [ ] `internal/domain` — `AaxFileItem` — the input file record
-- [ ] `internal/domain` — `AaxFileItem` — equality by file name, case-insensitive
-- [ ] `internal/domain` — `AaxFileItem` — `.aa` versus `.aax` selects the tag mapping
-- [ ] `internal/domain` — `Book` — `SortingTitle` identity
-- [ ] `internal/domain` — `Book` — `Parts` and the `PartNumber`
-- [ ] `internal/domain` — `Book` — `Caption` pair, one for files and one for tags
-- [ ] `internal/domain` — `Book` — `ExternalMeta` from the Audible sidecars
-- [ ] `internal/domain` — `Book` — `CheckParts` — the triangular-number completeness test
-- [ ] `internal/domain` — `Book` — `PartsType` `none` / `some` / `all`
-- [ ] `internal/domain` — `Book` — `InitAuthorTitle` — the runtime title regex
-- [ ] `internal/domain` — `Book` — `makeLongBookTitle` — the four long-title styles
-- [ ] `internal/domain` — `Book` — `PruneTitle` — colon and slash become semicolons
-- [ ] `internal/domain` — `Book` — `ExternalBookMeta.SeqString` — the `"1.5"` fraction
-- [ ] `internal/domain` — `Book` — `ChapterNumber` — local versus global numbering
-- [ ] `internal/domain` — `Book` — `Counts` — the chapter and track counters
-- [ ] `internal/domain` — `Part` — the chapter duality, `Chapters` and `Chapters2`
-- [ ] `internal/domain` — `Part` — `SwapChapters` and the `_namedChaptersIn1` flag
-- [ ] `internal/domain` — `Part` — `NamedChapters` and `EmbeddedChapters` accessors
-- [ ] `internal/domain` — `Part` — `ComplementChapterNames` — unnamed chapters become `(n)`
-- [ ] `internal/domain` — `Part` — `ApplicableInFileNameForTranscode` — the input chain
-- [ ] `internal/domain` — `Part` — `IsMp3Stream` with the cached override
-- [ ] `internal/domain` — `Part` — `SetFFmpegPrefer64Bit` — the 32-hour threshold
-- [ ] `internal/domain` — `Part` — `IsTrancodeConversion` — copy versus re-encode
-- [ ] `internal/domain` — `Part` — `TrackId` and `ChapterId`
-- [ ] `internal/domain` — `Chapter` — `HasNamedChapters` — both lists non-empty
-- [ ] `internal/domain` — `Chapter` — `TimeAdjustments` — the pending delta
+- [x] `internal/settings` — `EConvFormat` (`mp3`, `mp4`)
+- [x] `internal/settings` — `EConvMode` (`single`, `chapters`, `splitChapters`, `splitTime`)
+- [x] `internal/settings` — `EFileNaming` (5 values)
+- [x] `internal/settings` — `ETitleNaming` (7 values)
+- [x] `internal/settings` — `ETrackNumbering` (3 values)
+- [x] `internal/settings` — `ELongTitle` (4 values)
+- [x] `internal/settings` — `EGeneralNaming` (3 values)
+- [x] `internal/settings` — `EGeneralNamingEx` (4 values)
+- [x] `internal/settings` — `EFlatFolderNaming` (2 values)
+- [x] `internal/settings` — `EAaxCopyMode` flags enum with the 1/2/4 bit matrix
+- [x] `internal/settings` — `ENamedChapters` (3 values)
+- [x] `internal/settings` — `EOnlineUpdate` (3 values)
+- [x] `internal/settings` — `EVerifyAdjustChapterMarks` (3 values)
+- [x] `internal/settings` — `EFixAACEncoding` (3 values)
+- [x] `internal/settings` — `EReducedBitRate` (8 values)
+- [x] `internal/settings` — `EPreferEmbeddedChapterTimes` (3 values)
+- [x] `internal/settings` — `ERoleTagAssignment` (5 values, 2 deprecated)
+- [x] `internal/settings` — `EOutFolderConflict` (4 values)
+- [x] `internal/settings` — `EProgressPhase` (5 values)
+- [x] `internal/settings` — `ECallbackType` (10 values)
+- [x] `internal/settings` — the `Settings` struct, the shared contract
+- [x] `internal/settings` — the C# enum names, the localized rendering depends on them
+- [x] `internal/settings` — the deprecated narrator role assignments
+- [x] `internal/settings` — `TrackDuration` — the clamping range per mode
+- [x] `internal/settings` — `ApplicableBitRate` — the source and the requested rate
+- [x] `internal/settings` — `UseEmbeddedChapterTimes`
+- [x] `internal/settings` — `Snapshot` — a frozen copy for a conversion run
+- [x] `internal/domain` — `AaxFileItem` — the input file record
+- [x] `internal/domain` — `AaxFileItem` — equality by file name, case-insensitive
+- [x] `internal/domain` — `AaxFileItem` — `.aa` versus `.aax` selects the tag mapping
+- [x] `internal/domain` — `Book` — `SortingTitle` identity
+- [x] `internal/domain` — `Book` — `Parts` and the `PartNumber`
+- [x] `internal/domain` — `Book` — `Caption` pair, one for files and one for tags
+- [x] `internal/domain` — `Book` — `ExternalMeta` from the Audible sidecars
+- [x] `internal/domain` — `Book` — `CheckParts` — the triangular-number completeness test
+- [x] `internal/domain` — `Book` — `PartsType` `none` / `some` / `all`
+- [x] `internal/domain` — `Book` — `InitAuthorTitle` — the runtime title regex
+- [x] `internal/domain` — `Book` — `makeLongBookTitle` — the four long-title styles
+- [x] `internal/domain` — `Book` — `PruneTitle` — colon and slash become semicolons
+- [x] `internal/domain` — `Book` — `ExternalBookMeta.SeqString` — the `"1.5"` fraction
+- [x] `internal/domain` — `Book` — `ChapterNumber` — local versus global numbering
+- [x] `internal/domain` — `Book` — `Counts` — the chapter and track counters
+- [x] `internal/domain` — `Part` — the chapter duality, `Chapters` and `Chapters2`
+- [x] `internal/domain` — `Part` — `SwapChapters` and the `namedChaptersIn1` flag
+- [x] `internal/domain` — `Part` — `NamedChapters` and `EmbeddedChapters` accessors
+- [x] `internal/domain` — `Part` — `ComplementChapterNames` — unnamed chapters become `(n)`
+- [x] `internal/domain` — `Part` — `ApplicableInFileNameForTranscode` — the input chain
+- [x] `internal/domain` — `Part` — `IsMp3Stream` with the cached override
+- [x] `internal/domain` — `Part` — `SetFFmpegPrefer64Bit` — the 32-hour threshold
+- [x] `internal/domain` — `Part` — `IsTrancodeConversion` — copy versus re-encode
+- [x] `internal/domain` — `Part` — `TrackId` and `ChapterId`
+- [x] `internal/domain` — `Chapter` — `HasNamedChapters` — both lists non-empty
+- [x] `internal/domain` — `Chapter` — `TimeAdjustments` — the pending delta
+- [x] `internal/util` — `Prune` — the invalid and the doubtful characters
+- [x] `internal/util` — `Shorten` — the C# elision with a single ellipsis
+- [x] `internal/util` — `SplitTrim` and `Combine`
 
 ## M2 — Chapter algorithms
 
@@ -530,20 +535,34 @@ The C# original has **no automated tests**. The chapter-adjustment heuristics an
 the cue sheet are the most likely places for a regression to go unnoticed, so
 they are the first thing to cover.
 
-- [ ] `internal/domain` — `TimeInterval` — begin past end, end before begin, duration reset
-- [ ] `internal/domain` — `Book.CheckParts` — none, some, all, a missing part, a single part 1
-- [ ] `internal/domain` — `ExternalBookMeta.SeqString` — `"1"`, `"1.5"`, `"2.0"`, no series
-- [ ] `internal/chapters` — `CreateCueSheet` — no silences, one long silence, many silences
+- [x] `internal/domain` — `TimeInterval` — begin past end, end before begin, duration reset
+- [x] `internal/domain` — `Book.CheckParts` — none, some, all, a missing part, a single part 1
+- [x] `internal/domain` — `ExternalBookMeta.SeqString` — `"1"`, `"1.5"`, `"2.0"`, no series
+- [x] `internal/chapters` — `CreateCueSheet` — no silences, one long silence
+- [x] `internal/chapters` — `CreateCueSheet` — the split-time variant
+- [x] `internal/chapters` — `CreateCueSheet` — a silence shorter than 500 ms is ignored
+- [x] `internal/chapters` — `DetermineTimeAdjustment` — the general chapter mark
+- [x] `internal/chapters` — `DetermineTimeAdjustment` — a short trailing silence is split
+- [x] `internal/chapters` — `DetermineTimeAdjustment` — a long trailing silence is left alone
+- [x] `internal/chapters` — `AdjustTime` — the end moves earlier and the silence is clipped
+- [x] `internal/chapters` — `AdjustTime` — the silence migrates to the next chapter
+- [x] `internal/chapters` — `SetNewEnd` — accepted only inside a silence, unless `always`
+- [x] `internal/chapters` — the chapter duality — `SwapChapters` and the accessors
+- [x] `internal/chapters` — the padding chapters — insert and remove
+- [x] `internal/util` — `Prune` — every invalid character, the doubtful set, trailing dots, empty input
+- [x] `internal/util` — `Shorten` — the C# elision with a single ellipsis
+- [x] `internal/settings` — the enum names round-trip, the localised rendering depends on them
+- [x] `internal/settings` — the role assignment ordinals, they are explicit in C#
+- [x] `internal/settings` — the bit rate clamp, the track duration clamp
+- [x] `internal/settings` — `ApplicableBitRate`, `UseEmbeddedChapterTimes`, `FixNarrator`
+- [x] `internal/domain` — the title regex — a non-Latin title must not be truncated
 - [ ] `internal/chapters` — `CreateCueSheet` — a chapter shorter than the target length
 - [ ] `internal/chapters` — `CreateCueSheet` — a chapter exactly at the boundary
 - [ ] `internal/chapters` — `DetermineTimeAdjustment` — the part-title pattern
-- [ ] `internal/chapters` — `DetermineTimeAdjustment` — the general chapter mark
-- [ ] `internal/chapters` — `AdjustTime` — the silence migration in both directions
 - [ ] `internal/chapters` — `PreferEmbeddedChapterTimes` — an unambiguous match, an ambiguous match, no match
 - [ ] `internal/naming` — `Numbers` — none, some, all, a single track, more than 999 tracks
-- [ ] `internal/naming` — `Prune` — every invalid character, the doubtful set, trailing dots, empty input
-- [ ] `internal/platform` — `ExUnc` — a short path, a long path, a UNC path, an already-converted path
 - [ ] `internal/naming` — the naming matrix, every `EFileNaming` × `EConvMode` × `EParts`
+- [ ] `internal/platform` — `ExUnc` — a short path, a long path, a UNC path, an already-converted path
 - [ ] `internal/ffmpeg` — the output parsing, one case per regex
 - [ ] `internal/app` — the URI parsing, the golden fixtures
 - [ ] `internal/app` — the handoff document, the golden fixtures
