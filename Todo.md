@@ -436,9 +436,13 @@ DRM position.
 
 ## M10 — Desktop interface
 
-- [ ] `internal/ui` — the GOUI entry point, `ui.Run` from `main` only
-- [ ] `internal/ui` — the Modern theme via `modern.FromSettings`
-- [ ] `internal/ui` — the main window shell
+- [x] `internal/ui` — the GOUI entry point, `ui.Run` from `main` only
+- [x] `internal/ui` — the Modern theme via `modern.FromSettings`
+- [x] `internal/ui` — the main window shell
+- [x] `internal/ui` — the Add files button, the native file dialog
+- [x] `internal/ui` — the onboarding wizard, the first-run detection
+- [x] `internal/ui` — the onboarding wizard, the step navigation
+- [x] `internal/ui` — the onboarding wizard, the skip and the finish
 - [ ] `internal/ui` — the file table, nine columns
 - [ ] `internal/ui` — the file table, sortable headers
 - [ ] `internal/ui` — the file table, the numeric columns sort by their real value
