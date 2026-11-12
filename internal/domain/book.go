@@ -230,6 +230,37 @@ func (b *Book) HasNamedChapters() bool {
 	return len(b.Parts) > 0
 }
 
+// HasUniqueChapterNames reports whether the named chapters of the book are
+// unique.
+//
+// It is only relevant in the modes that put one file per chapter. When the
+// names are not unique the chapter number is prefixed, so that the file names
+// do not collide.
+func (b *Book) HasUniqueChapterNames(mode settings.ConvMode) bool {
+	if mode == settings.ConvModeSingle || mode == settings.ConvModeSplitTime {
+		return false
+	}
+	if !b.HasNamedChapters() {
+		return false
+	}
+
+	var names []string
+	for _, p := range b.Parts {
+		for _, c := range p.NamedChapters() {
+			if util.IsNullOrWhiteSpace(c.Name) {
+				continue
+			}
+			names = append(names, util.Prune(c.Name))
+		}
+	}
+
+	distinct := map[string]bool{}
+	for _, n := range names {
+		distinct[n] = true
+	}
+	return len(names) == len(distinct)
+}
+
 // ChapterNumber returns the number of a chapter, either local to the part or
 // global across the parts.
 func (b *Book) ChapterNumber(chapter *Chapter) uint {

@@ -277,22 +277,23 @@ DRM position.
 
 ## M3 — Naming and tagging
 
-- [ ] `internal/naming` — `Prune` — strip the invalid file name characters
-- [ ] `internal/naming` — `Prune` — strip the 60+ doubtful typographic characters
-- [ ] `internal/naming` — `Prune` — trim trailing dots
-- [ ] `internal/naming` — `fileChapters` — the five `EFileNaming` schemes
-- [ ] `internal/naming` — `fileSingleNone` — the single-file schemes
-- [ ] `internal/naming` — `fileSingleSome` — the part-number schemes
-- [ ] `internal/naming` — `fullPath` — the folder layout matrix
-- [ ] `internal/naming` — the part and chapter sub-folder prefixes
-- [ ] `internal/naming` — `Numbers` — the track, chapter, part and disc counters
-- [ ] `internal/naming` — `Numbers` — local numbering for `EParts.some`
-- [ ] `internal/naming` — `Numbers` — global numbering across parts
-- [ ] `internal/naming` — `Numbers` — the digit counts for zero padding
-- [ ] `internal/naming` — `SetTrackTitle` — the tag title schemes
+- [x] `internal/naming` — `Prune` — strip the invalid file name characters
+- [x] `internal/naming` — `Prune` — strip the 60+ doubtful typographic characters
+- [x] `internal/naming` — `Prune` — trim trailing dots
+- [x] `internal/naming` — `fileChapters` — the five `EFileNaming` schemes
+- [x] `internal/naming` — `fileSingleNone` — the single-file schemes
+- [x] `internal/naming` — `fileSingleSome` — the part-number schemes
+- [x] `internal/naming` — `fullPath` — the folder layout matrix
+- [x] `internal/naming` — the part and chapter sub-folder prefixes
+- [x] `internal/naming` — `Numbers` — the track, chapter, part and disc counters
+- [x] `internal/naming` — `Numbers` — local numbering for `EParts.some`
+- [x] `internal/naming` — `Numbers` — global numbering across parts
+- [x] `internal/naming` — `Numbers` — the digit counts for zero padding
+- [x] `internal/naming` — `SetTrackTitle` — the tag title schemes
+- [x] `internal/naming` — `TrackForFile` — replace the slash in the track component
+- [x] `internal/naming` — `GetGenre` — the genre resolution and the fallback
 - [ ] `internal/naming` — `buildPerformerTag` — the role assignments
 - [ ] `internal/naming` — the `wmrk` watermark tag
-- [ ] `internal/naming` — `TrackForFile` — replace the slash in the track component
 
 ## M4 — Settings, progress and diagnostics
 
@@ -560,8 +561,8 @@ they are the first thing to cover.
 - [ ] `internal/chapters` — `CreateCueSheet` — a chapter exactly at the boundary
 - [ ] `internal/chapters` — `DetermineTimeAdjustment` — the part-title pattern
 - [ ] `internal/chapters` — `PreferEmbeddedChapterTimes` — an unambiguous match, an ambiguous match, no match
-- [ ] `internal/naming` — `Numbers` — none, some, all, a single track, more than 999 tracks
-- [ ] `internal/naming` — the naming matrix, every `EFileNaming` × `EConvMode` × `EParts`
+- [x] `internal/naming` — `Numbers` — none, some, all, a single track, more than 999 tracks
+- [x] `internal/naming` — the naming matrix, every `EFileNaming` × `EConvMode` × `EParts`
 - [ ] `internal/platform` — `ExUnc` — a short path, a long path, a UNC path, an already-converted path
 - [ ] `internal/ffmpeg` — the output parsing, one case per regex
 - [ ] `internal/app` — the URI parsing, the golden fixtures

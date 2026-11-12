@@ -1,0 +1,33 @@
+# Normalize all text to LF in the repo, check out with platform default
+* text=auto eol=lf
+
+# Explicit binary
+*.aaxc binary
+*.aax binary
+*.m4b binary
+*.m4a binary
+*.mp3 binary
+*.exe binary
+*.dll binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+
+# Windows scripts want CRLF
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.iss text eol=crlf
+
+# Go source and docs
+*.go text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+Makefile text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
